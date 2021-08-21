@@ -391,6 +391,9 @@ namespace UdonSharp.Video
         /// </summary>
         public void OnURLInput()
         {
+            if(!targetVideoPlayer.isSubscribedToPlayer)
+                OnSubscribeButtonPressed(); // Subscribe to the player if you're not already.
+
             targetVideoPlayer.PlayVideo(urlField.GetUrl());
             urlField.SetUrl(VRCUrl.Empty);
         }
